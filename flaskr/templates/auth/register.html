@@ -1,0 +1,384 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>注册页面</title>
+  <link rel="stylesheet" href="../../static/assets/css/流星雨.css">
+  <style>
+    a {
+      text-align: center;
+      color: white;
+      box-sizing: border-box;
+      font-size: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 38px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /*更改默认值*/
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    /*添加背景图片*/
+    .main {
+      width: 100%;
+      height: 100%;
+      /* background: url("assets/img/back.jpg") 100% 100% no-repeat; */
+    }
+
+    .main:before {
+      content: "";
+      background: rgba(112, 185, 176, 0.85);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    /*让输入框居中*/
+    .loginFrame {
+      width: 700px;
+      height: 500px;
+      /* background: rgba(0, 0, 0, 0.25); */
+      background-color: rgb(112, 185, 176);
+      opacity: 0.9;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      /*添加边框圆角*/
+      /* border-radius: 10px; */
+
+      /*添加边距挤下去*/
+      padding: 50px 0;
+      box-sizing: border-box;
+
+      /*添加阴影*/
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.151);
+      color: black;
+
+    }
+
+    /*改变盒子下方的输入框位置*/
+    .loginFrame>div {
+      width: 350px;
+      height: 50px;
+      margin: 40px auto;
+      /*改变字体颜色*/
+      color: white;
+    }
+
+    /*改变标题居中, 并且改颜色*/
+    .loginFrame>p {
+      text-align: center;
+      color: white;
+      font-size: 25px;
+    }
+
+    /*改变输入框文字*/
+    .loginFrame>div span {
+      display: inline-block;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /*改变输入框样式*/
+    .loginFrame>div input {
+      width: 100%;
+      height: 30px;
+      /*透明色*/
+      background: transparent;
+      /*清除默认边框*/
+      border: none;
+      /*添加底部边框*/
+      border-bottom: 2px solid white;
+      /*清除蓝色点击框*/
+      outline: none;
+      /*改变文字颜色*/
+      color: white;
+    }
+
+    /*改变点击登录按钮样式*/
+    .loginFrame .enterBut {
+      width: 200px;
+      height: 50px;
+      /*添加圆角*/
+      border-radius: 50px;
+      /*设置背景颜色  渐变*/
+    /*  background-image: linear-gradient(to right, #70b9b0, #fff); */
+      text-align: center;
+      /* padding-top: 10px; */
+      box-sizing: border-box;
+      font-size: 20px;
+      cursor: pointer;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    /*给登录按钮添加 鼠标放上效果 */
+    .loginFrame .enterBut:hover {
+       /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset; */
+	   background: #fff;
+	   color: #70b9b0;
+	   border: 1px solid #70b9b0;
+	   opacity: 0.9;
+    }
+
+    /*给输入框提醒文字改变颜色*/
+    /*适配谷歌*/
+    input::-webkit-input-placeholder {
+      color: #BDCADA;
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+
+    .box1 {
+      width: 100%;
+      height: 100vh;
+      background: url("../../static/img/back.jpg") top center;
+      opacity: 0.9;
+      background-size: cover;
+      position: relative;
+      margin-bottom: -80px;
+    }
+
+    #box1:before {
+      content: "";
+      background: rgba(112, 185, 176, 0.85);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .box1 .hero-container {
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      padding-top: 80px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1">
+    <!-- 做一个好看的登录界面 使用 html + css -->
+    <div class="container">
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+      <div class="meteor"></div>
+    </div>
+
+
+    <!--背景-->
+    <div class="main">
+      <form action="./register" method="post" autocomplete="off" onsubmit="return checkForm()&&sublim()">
+
+        <!--注册框-->
+        <div class="loginFrame">
+          <!--标题-->
+          <p><a href="javascript:;" class="loginTitle">注册</a>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a href="./login" class="loginTitle">登录</a>
+          </p>
+
+          <!--用户名-->
+          <div class="user">
+            <label>
+              <!--用户名图标-->
+              <span>
+                <svg t="1586505199980" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="1153" width="20" height="20">
+                  <path
+                    d="M902.073578 843.004763c-21.37789-54.960753-52.02591-104.361883-91.082438-146.82602-39.269375-42.694381-85.068468-76.247568-136.134517-99.737562-9.700943-4.459568-19.513426-8.513908-29.426193-12.168134 21.951965-12.276604 42.351574-27.578102 60.673871-45.680389 53.16178-52.53654 82.434477-122.382305 82.434477-196.678428 0-74.2951-29.271674-144.139841-82.434477-196.671265C652.941498 92.707448 582.261739 63.775512 507.078409 63.775512c-75.181283 0-145.861042 28.931936-199.022823 81.468476-53.157687 52.5304-82.435501 122.376165-82.435501 196.671265 0 74.296123 29.277814 144.141888 82.435501 196.678428 18.323321 18.101263 38.727023 33.403784 60.672848 45.680389-9.912767 3.65832-19.723204 7.707542-29.42517 12.168134-51.066049 23.489994-96.865141 57.043181-136.133493 99.737562-39.058574 42.469254-71.332628 91.272773-91.083461 146.82602-16.479323 46.352701-14.757099 92.137467-15.594163 113.518427l66.207911 0c-2.185782-152.698774 144.750755-331.47139 344.379375-331.47139 199.63169 0 350.428138 185.315636 351.007329 331.47139l66.207911 0C923.113777 915.197992 924.141176 899.734812 902.073578 843.004763L902.073578 843.004763zM291.845393 341.915253c0-117.2801 96.554056-212.695217 215.234039-212.695217 118.68203 0 215.236086 95.415117 215.236086 212.695217 0 117.281123-96.554056 212.697263-215.236086 212.697263C388.399449 554.612517 291.845393 459.196377 291.845393 341.915253L291.845393 341.915253zM291.845393 341.915253"
+                    p-id="1154" fill="#ffffff"></path>
+                </svg>
+
+              </span>
+			  
+              <span>用户名</span>
+			  
+              <!--用户名输入框-->
+              <input type="text" placeholder="   UserName" name="username" id="username">
+            </label>
+			
+			
+          </div>
+          <!--密码-->
+          <div class="password">
+            <label>
+              <!--密码图标-->
+              <span>
+                <svg t="1586505236680" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="1983" width="20" height="20">
+                  <path
+                    d="M522.368 10.3936c-144.1536 0-252.9024 114.6624-252.9024 266.752l0 93.7472-8.192 0c-75.776 0-137.4464 63.3088-137.4464 141.0816l0 360.5248c0 77.7728 61.6704 141.1072 137.4464 141.1072l524.3392 0c75.776 0 137.4464-63.3344 137.4464-141.1072L923.0592 511.9744c0-77.7728-61.6704-141.0816-137.4464-141.0816l-4.5056 0c-1.2032-0.4352-2.4576-0.5632-3.712-0.768l0-93.0048C777.4464 125.0816 667.8016 10.3936 522.368 10.3936L522.368 10.3936zM522.368 52.224c123.52 0 213.248 94.592 213.248 224.9472l0 92.3648L311.3216 369.536l0-92.3648C311.3216 146.816 400.0768 52.224 522.368 52.224L522.368 52.224zM881.28 511.9744l0 360.5248c0 54.7328-42.9312 99.2768-95.616 99.2768L261.2992 971.776c-52.736 0-95.616-44.544-95.616-99.2768L165.6832 511.9744c0-54.7072 42.88-99.2512 95.616-99.2512l50.0224 0 0-1.3824 424.2688 0 0 1.3824 50.048 0C838.3488 412.7488 881.28 457.2672 881.28 511.9744L881.28 511.9744zM881.28 511.9744M518.8608 568.0384c-33.5104 0-60.672 28.0064-60.672 62.5664 0 23.1168 12.2368 43.3408 30.336 54.1696l0 102.1952c0 17.2544 13.568 31.3088 30.336 31.3088 16.7424 0 30.336-14.0544 30.336-31.3088L549.1968 684.8c18.0992-10.8288 30.3104-31.0272 30.3104-54.1696C579.456 596.0704 552.32 568.0384 518.8608 568.0384L518.8608 568.0384zM518.8608 568.0384"
+                    p-id="1984" fill="#ffffff"></path>
+                </svg>
+              </span>
+              <span>密码</span>
+			  
+              <!--密码输入框-->
+              <input type="password" placeholder="   PassWord" name="password" id="password">
+            </label>
+          </div>
+		  
+          <!--验证码-->
+          <div>
+			<!--验证码输入框-->
+            <input type="text" value="" placeholder="请输入验证码（区分大小写）"
+              style="height:50px;position: relative; top:-15px; font-size:20px;" id="text">
+			  
+            <canvas id="canvas" width="100" height="33" onclick="dj()" style="border: 2px solid #fff;
+        border-radius: 5px; background-color: white"></canvas>
+          </div>
+
+          <!--注册按钮-->
+          <div>
+            <br/>
+            <center>
+              <input class="enterBut" type="submit" value="register" />
+            </center>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</body>
+<script>
+  const show_num = [];
+  draw(show_num);
+
+  function dj() {
+    draw(show_num);
+  }
+  
+//检查验证码
+  function sublim() {
+    var val = document.getElementById("text").value;
+    var num = show_num.join("");
+    if (val === '') {
+      alert('请输入验证码！');
+      return false;
+    } else if (!(val === num)) {
+      alert('验证码错误！\n你输入的是:  ' + val + "\n正确的是:  " + num + '\n请重新输入！');
+      document.getElementById("text").value = '';
+      draw(show_num);
+      return false;
+    } else if (val === num) {
+      alert('提交成功！');
+      document.getElementById(".input-val").val('');
+      draw(show_num);
+      return true;
+    }
+  }
+
+//检查用户名和密码
+  function checkForm() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    if (username == null || username === "" || password == null || password === "") {
+      alert("用户名或密码不能为空");
+      return false;
+    }
+    return true;
+  }
+
+//绘制验证码
+  function draw(show_num) {
+    //文字在canvas上的x坐标
+    let y;
+    let x;
+    let i;
+    const canvas_width = document.getElementById('canvas').clientWidth;
+    const canvas_height = document.getElementById('canvas').clientHeight;
+    const canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+    const context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+    canvas.width = canvas_width;
+    canvas.height = canvas_height;
+    const sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0,q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m";
+    const aCode = sCode.split(",");
+    const aLength = aCode.length;//获取到数组的长度
+
+    for (i = 0; i <= 3; i++) {
+      const j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+      const deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+      const txt = aCode[j];//得到随机的一个内容
+      show_num[i] = txt;
+      x = 10 + i * 20;
+      y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+      context.font = "bold 23px 微软雅黑";
+
+      context.translate(x, y);
+      context.rotate(deg);
+
+      context.fillStyle = randomColor();
+      context.fillText(txt, 0, 0);
+
+      context.rotate(-deg);
+      context.translate(-x, -y);
+    }
+    for (i = 0; i <= 5; i++) { //验证码上显示线条
+      context.strokeStyle = randomColor();
+      context.beginPath();
+      context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+      context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+      context.stroke();
+    }
+    for (i = 0; i <= 30; i++) { //验证码上显示小点
+      context.strokeStyle = randomColor();
+      context.beginPath();
+      x = Math.random() * canvas_width;
+      y = Math.random() * canvas_height;
+      context.moveTo(x, y);
+      context.lineTo(x + 1, y + 1);
+      context.stroke();
+    }
+  }
+
+  function randomColor() {
+    //得到随机的颜色值
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + "," + g + "," + b + ")";
+  }
+</script>
+
+</html>

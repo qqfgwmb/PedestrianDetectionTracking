@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+		<title>文件上传</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+
+		<link href="../../static/assets/img/favicon.png" rel="icon">
+		<link href="../../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+		<link rel="stylesheet" href="../../static/assets/css/文字特效normalize.css">
+		<link rel="stylesheet" href="../../static/assets/css/文字特效.css" media="screen" type="text/css" />
+		<!--必须在zyupload-1.0.0.min.css之前-->
+		<script type="text/javascript" src="../../static/js/jquery-3.1.0.js"></script>
+
+		<link rel="stylesheet" href="../../static/zyupload/skins/zyupload-1.0.0.min.css " type="text/css">
+		<script type="text/javascript" src="../../static/zyupload/zyupload-1.0.0.min.js"></script>
+		
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900"
+			rel="stylesheet">
+
+		<!-- Vendor CSS Files -->
+		<link href="../../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+		<link href="../../static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+		<!-- Template Main CSS File -->
+		<link href="../../static/assets/css/主页面风格.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<!-- ======= Hero Section ======= -->
+
+		<div class="hero-container">
+			<div style="position: relative;top:20px;height:1000px">
+				<div id="zyupload" class="zyupload"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				// 初始化插件
+				$("#zyupload").zyUpload({
+
+					width: "1050px", // 宽度
+					height: "500px", // 高度
+					itemWidth: "250px", // 文件项的宽度
+					itemHeight: "205px", // 文件项的高度
+					url: "./upload_file", // 上传文件的路径
+					fileType: ["mp4"], // 上传文件的类型
+					fileSize: 51200000000, // 上传文件的大小
+					multiple: true, // 是否可以多个文件上传
+					dragDrop: true, // 是否可以拖动上传文件
+					tailor: true, // 是否可以裁剪图片
+					del: true, // 是否可以删除文件
+					finishDel: true, // 是否在上传文件完成后删除预览
+					/* 外部获得的回调接口 */
+					onSelect: function(selectFiles,
+						allFiles) { // 选择文件的回调方法  selectFile:当前选中的文件  allFiles:还没上传的全部文件
+						console.info("当前选择了以下文件：");
+						console.info(selectFiles);
+					},
+					onDelete: function(file, files) { // 删除一个文件的回调方法 file:当前删除的文件  files:删除之后的文件
+						console.info("当前删除了此文件：");
+						console.info(file.name);
+					},
+					onSuccess: function(file, response) { // 文件上传成功的回调方法
+						console.info("此文件上传成功");
+						console.info(file.name);
+						{#console.info("此文件上传到服务器地址：");#}
+						console.info(response);
+						$("#uploadInf").append("<p>上传成功</p>");
+						// 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //表格重载 就相当于 刷新父页面的表格-dataTable是父页面的表格ID属性
+                        parent.location.reload();
+                        //关闭当前frame
+                        parent.layer.close(index);
+					},
+					onFailure: function(file, response) { // 文件上传失败的回调方法
+						console.info("此文件上传失败：");
+						console.info(file.name);
+					},
+					onComplete: function(response) { // 上传完成的回调方法
+						console.info("文件上传完成");
+						console.info(response);
+					}
+				});
+
+			});
+		</script>
+		<!-- Vendor JS Files -->
+
+		<script src="../../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="../../static/assets/vendor/php-email-form/validate.js"></script>
+		<script src="../../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+		<script src="../../static/assets/vendor/venobox/venobox.min.js"></script>
+		<script src="../../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="../../static/assets/js/index.js"></script>
+		<script src="../../static/assets/js/main.js"></script>
+
+	</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+.left{
+    float:left;
+    width: 25%;
+    height: 100%;
+}
+.right{
+    float:right;
+    width: 73%;
+    height: 100%;
+}
+
+.my_switch{
+	display: inline-block;
+	margin-left: 40px;
+}
+
+.my_div{
+	width: 300px;
+    height: 80px;
+    display: flex;
+    align-items:center;
+}
+
+.video_div{
+  width: 908px;
+  height: 620px;
+}
+
+.video_stream{
+  width: 900px;
+  height: 620px;
+}
+
+.alarm_label{
+	width: 120px;
+}
+
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+
+input.cmn-toggle-round + label {
+  padding: 2px;
+  width: 70px;
+  height: 30px;
+  background-color: #dddddd;
+  border-radius: 16px;
+}
+input.cmn-toggle-round + label:before,
+input.cmn-toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+input.cmn-toggle-round + label:before {
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round + label:after {
+  width: 30px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: margin 0.4s;
+}
+input.cmn-toggle-round:checked + label:before {
+  background-color: #8ce196;
+}
+input.cmn-toggle-round:checked + label:after {
+  margin-left: 40px;
+}

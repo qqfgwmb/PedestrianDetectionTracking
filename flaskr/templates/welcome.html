@@ -1,0 +1,210 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>欢迎界面</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <link href="../static/assets/img/favicon.png" rel="icon">
+    <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="../static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="../static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/assets/css/主页面风格.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/assets/css/流星雨.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            function n(n,e,t){
+                return n.getAttribute(e)||t
+            }
+            function e(n){
+                return document.getElementsByTagName(n)
+            }
+            function t(){
+                var t=e("script"),o=t.length,i=t[o-1];
+                return{l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.6),c:n(i,"color","46,139,87"),n:n(i,"count",150)}
+            }
+            function o(){
+                a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+                    c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+            }
+            function i(){
+                r.clearRect(0,0,a,c);
+                var n,e,t,o,m,l;
+                s.forEach(function(i,x){
+                    for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],
+                    null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,
+                        l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
+                        t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+                }),
+                    x(i)
+            }
+            var a,c,u,m=document.createElement("canvas"),d=t(),l="c_n"+d.l,r=m.getContext("2d"),
+                x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+                    function(n){
+                        window.setTimeout(n,1e3/45)
+                    },
+                w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,
+                window.onmousemove=function(n){
+                    n=n||window.event,y.x=n.clientX,y.y=n.clientY
+                },
+                window.onmouseout=function(){
+                    y.x=null,y.y=null
+                };
+            for(var s=[],f=0;d.n>f;f++){
+                var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})
+            }
+            u=s.concat([y]),
+                setTimeout(function(){i()},100)
+        });
+    </script>
+	
+    <style type="text/css">
+        .container{
+            position: relative;
+            width: 100%;
+            height: 20%;
+            -webkit-transform: rotate(45deg);
+            transform: rotateZ(45deg);
+            -webkit-animation: sky 200000ms linear infinite;
+            animation: sky 200000ms linear infinite;
+        }
+        body{
+            background: radial-gradient(ellipse at bottom, #3c8b81 0%, #1b2735 100%);
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Times New Roman', Times, serif;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .meteor{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, #70b9b0, rgba(112, 185, 176, 0.85));
+            border-radius: 999px;
+            -webkit-filter: drop-shadow(0 0 6px #70b9b0);
+            filter: drop-shadow(0 0 6px #70b9b0);
+            -webkit-animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+            animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+        }
+
+        .meteor::before, .meteor::after{
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #70b9b0, rgba(0, 0, 255, 0) );
+            -webkit-transform: translateX(50%) rotateZ(45deg);
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            -webkit-animation: shining 3000ms ease-in-out infinite;
+            animation: shining 3000ms ease-in-out infinite;
+        }
+        #hero {
+            width: 50%;
+            height: 60vh;
+            background-size: cover;
+            position: relative;
+            margin-bottom: -80px;
+        }
+    </style>
+</head>
+
+<body>
+	
+<!--流星雨动画-->
+<div class="container">
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+</div>
+
+<!-- ======= 欢迎页面主体内容 ======= -->
+<center>
+    <section id="hero">
+        <div class="hero-container">
+            <h1>单/多镜头行人追踪系统</h1>
+			<br>
+			<br>
+			<!--欢迎页面按钮-->
+            <a href="/auth/login" class="btn-get-started scrollto">Get Started</a>
+        </div>
+    </section>
+</center>
+
+<!--流星雨动画-->
+<div class="container">
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+</div>
+
+<!-- Vendor JS Files -->
+<script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+<script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+<script src="../static/assets/vendor/php-email-form/validate.js"></script>
+<script src="../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../static/assets/vendor/venobox/venobox.min.js"></script>
+<script src="../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/assets/js/main.js"></script>
+
+</body>
+</html>

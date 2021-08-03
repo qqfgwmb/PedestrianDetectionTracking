@@ -1,0 +1,155 @@
+a {
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+  font-size: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 38px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+hr {
+  position: relative;
+  width: 50%;
+  top: 15px;
+  left: 15px;
+  margin: 0 auto;
+}
+/*更改默认值*/
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+/*添加背景图片*/
+.main {
+  width: 100%;
+  height: 100%;
+}
+.main:before {
+  content: "";
+  background: rgba(112, 185, 176, 0.85);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+/*让输入框居中*/
+.loginFrame {
+  width: 700px;
+  height: 480px;
+  background-color: #70b9b0;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  /*添加边框圆角*/
+  /*添加边距挤下去*/
+  padding: 50px 0;
+  box-sizing: border-box;
+  /*添加阴影*/
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.151);
+  color: black;
+}
+/*改变盒子下方的输入框位置*/
+.loginFrame > div {
+  width: 350px;
+  height: 50px;
+  margin: 40px auto;
+  /*改变字体颜色*/
+  color: black;
+}
+/*改变标题居中, 并且改颜色*/
+.loginFrame > p {
+  text-align: center;
+  color: black;
+  font-size: 25px;
+}
+/*改变输入框文字*/
+.loginFrame > div span {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+/*改变输入框样式*/
+.loginFrame > div input {
+  width: 100%;
+  height: 100%;
+  /*透明色*/
+  background: transparent;
+  /*清除默认边框*/
+  border: none;
+  /*添加底部边框*/
+  border-bottom: 1px solid black;
+  /*清除蓝色点击框*/
+  outline: none;
+  /*改变文字颜色*/
+  color: black;
+  font-size: 20px;
+}
+/*改变点击登录按钮样式*/
+.loginFrame .enterBut {
+  width: 200px;
+  height: 50px;
+  /*添加圆角*/
+  border-radius: 50px;
+  /*设置背景颜色  渐变*/
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  color: #fff;
+}
+/*给登录按钮添加 鼠标放上效果 */
+.loginFrame .enterBut:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+}
+/*给输入框提醒文字改变颜色*/
+/*适配谷歌*/
+input::-webkit-input-placeholder {
+  color: #BDCADA;
+}
+svg {
+  vertical-align: middle;
+}
+.box1 {
+  width: 100%;
+  height: 100vh;
+  background: url("../img/hero-background.jpg") top center;
+  opacity: 0.93;
+  background-size: cover;
+  position: relative;
+  margin-bottom: -80px;
+}
+#box1:before {
+  content: "";
+  background: rgba(112, 185, 176, 0.85);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.box1 .hero-container {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding-top: 80px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}

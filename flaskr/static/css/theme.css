@@ -1,0 +1,48 @@
+body.index {
+	background: rgba(0, 0, 0, 0) !important;
+	background-image: url("../static/img/hero-background.jpg") !important;
+}
+
+.container {
+	background: #81d8cf !important;
+}
+
+.container .layui-nav-bar {
+	background: rgba(255, 120, 0, 1) !important;
+}
+
+.container .logo a {
+	background: rgba(0, 0, 0, 0) !important;
+}
+
+.container .logo a {
+	color: rgb(255, 255, 255) !important;
+}
+
+.left-nav {
+	background: rgb(238, 238, 238) !important;
+}
+
+.left-nav a {
+	color: rgb(51, 51, 51) !important;
+}
+
+.left-nav a:hover,
+.left-nav a.active {
+	background: #81d8cf !important;
+}
+
+.left-nav a:hover,
+.left-nav a.active {
+	color: rgb(255, 255, 255) !important;
+}
+
+.left-nav a:hover,
+.left-nav a.active {
+	border-color: rgba(255, 120, 0, 1) !important;
+}
+
+body {
+	/* background: rgb(241, 241, 241) !important; */
+	background-image: url("../static/img/hero-background.jpg") !important;
+}

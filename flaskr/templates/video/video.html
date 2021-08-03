@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+		<title>视频管理</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
+
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<link href="../../static/assets/img/favicon.png" rel="icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../../static/css/x-admin.css" media="all">
+		<script src="../../static/js/x-layui.js"></script>
+
+		<link href="../../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+		<link href="../../static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+		<link href="../../static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+		<script type="text/javascript" src="../../static/js/jquery-3.1.0.js"></script>
+
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- 页面样式表 -->
+		<style>
+			.panel-footer {
+				text-align: center;
+				margin-bottom: 10px;
+			}
+
+			.ql-delete {
+				color: red;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<!-- ======= Hero Section ======= -->
+		<div class="hero-container">
+			<div style="position: relative;top:15px">
+				<div class="container" style="float: left;">
+					<label>
+						<button class="btn btn-info" id="exit_btn" value="上传" onclick="x_admin_show('上传视频','../upload',1200,500)" >
+							<span class="glyphicon glyphicon-upload"></span>
+							<span style="color: white;text-decoration: none;">上传视频</span>
+						</button>
+					</label>
+
+                    <label>
+						<button class="btn btn-info" value="日志查看" >
+							<span class="glyphicon glyphicon-list-alt"></span>
+							<a href="#" style="color: white;text-decoration: none;">日志查看</a>
+						</button>
+					</label>
+
+					<span style="float: right;font-size: 20px;">共有数据：{{total_count}}条</span>
+
+					<div class="panel panel-success">
+						<div class="panel-body">
+							<div class="row">
+								 {% for video in video_list %}
+                                    <div class="col-md-4 col-sm-4">
+									<div class="panel panel-default">
+                                        <div class="panel-heading" style="text-align: center;font-size: 16px;
+										font-weight: bolder;color: #70b9b0" >
+                                            {{ video.name }}</div>
+
+										<div class="panel-body">
+											<video id="ipad-video"
+												   class="video-js vjs-default-skin vjs-big-play-centered" controls
+												   preload="auto" height="200" data-setup="{}"
+												   style="width: 100%">
+												<source src="../../{{video.url}}" type="video/mp4">
+											</video>
+										</div>
+										<div class="panel-footer">
+											<div class="video-view">
+												<a href="../delete/{{ video.video_id }}" class="ql-delete" onclick="return false">
+													<button type="button"
+														class="btn btn-danger  btn-sm">删除</button></a>
+												<a href="../realtimeVideo?video_id={{ video.video_id }}" class="text-success ql-check">
+												<button type="button"
+														class="btn btn-success  btn-sm">检测</button></a>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						<nav>
+							<ul class="pagination pagination-2g" style="margin-top: -20px; margin-left: 400px;">
+								<li>
+									<a href="./0">
+										<span style="color: #70b9b0">首页</span>
+									</a>
+								</li>
+                                {% for i in range(0, pages) %}
+                                    <li>
+                                    {% if i == now_page %}
+                                        <a href="./{{ i }}"><span style="color: #ff253a" >{{ i + 1 }}</span></a>
+                                    {% else %}
+                                        <a href="./{{ i }}"><span style="color: #70b9b0" >{{ i + 1 }}</span></a>
+                                    {% endif %}
+                                    </li>
+                                {% endfor %}
+								<li>
+									<a href="./-1">
+										<span style="color: #70b9b0">尾页</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../static/lib/layui/layui.js" charset="utf-8"></script>
+		<script src="../../static/js/x-layui.js" charset="utf-8"></script>
+        <script>
+			layui.use(['laydate', 'element', 'laypage', 'layer'], function() {
+				$ = layui.jquery; //jquery
+				laydate = layui.laydate; //日期插件
+				lement = layui.element(); //面包导航
+				laypage = layui.laypage; //分页
+				layer = layui.layer; //弹出层
+
+				//以上模块根据需要引入
+
+				laypage({
+					cont: 'page',
+					pages: 100,
+					first: 1,
+					last: 100,
+					prev: '<em><</em>',
+					next: '<em>></em>'
+				});
+
+				var start = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						end.min = datas; //开始日选好后，重置结束日的最小日期
+						end.start = datas //将结束日的初始值设定为开始日
+					}
+				};
+
+				var end = {
+					min: laydate.now(),
+					max: '2099-06-16 23:59:59',
+					istoday: false,
+					choose: function(datas) {
+						start.max = datas; //结束日选好后，重置开始日的最大日期
+					}
+				};
+
+				document.getElementById('LAY_demorange_s').onclick = function() {
+					start.elem = this;
+					laydate(start);
+				}
+				document.getElementById('LAY_demorange_e').onclick = function() {
+					end.elem = this
+					laydate(end);
+				}
+
+			});
+
+			//批量删除提交
+			function delAll() {
+				layer.confirm('确认要删除吗？', function(index) {
+					//捉到所有被选中的，发异步进行删除
+					layer.msg('删除成功', {
+						icon: 1
+					});
+				});
+			}
+			/*用户-添加*/
+			function member_add(title, url, w, h) {
+				x_admin_show(title, url, w, h);
+			}
+			/*用户-查看*/
+			function member_show(title, url, id, w, h) {
+				x_admin_show(title, url, w, h);
+			}
+
+			/*用户-停用*/
+			function member_stop(obj, id) {
+				layer.confirm('确认要停用吗？', function(index) {
+					//发异步把用户状态进行更改
+					$(obj).parents("tr").find(".td-manage").prepend(
+						'<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="layui-icon">&#xe62f;</i></a>'
+						);
+					$(obj).parents("tr").find(".td-status").html(
+						'<span class="layui-btn layui-btn-disabled layui-btn-mini">已停用</span>');
+					$(obj).remove();
+					layer.msg('已停用!', {
+						icon: 5,
+						time: 1000
+					});
+				});
+			}
+
+			/*用户-启用*/
+			function member_start(obj, id) {
+				layer.confirm('确认要启用吗？', function(index) {
+					//发异步把用户状态进行更改
+					$(obj).parents("tr").find(".td-manage").prepend(
+						'<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>'
+						);
+					$(obj).parents("tr").find(".td-status").html(
+						'<span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>');
+					$(obj).remove();
+					layer.msg('已启用!', {
+						icon: 6,
+						time: 1000
+					});
+				});
+			}
+			// 用户-编辑
+			function member_edit(title, url, id, w, h) {
+				x_admin_show(title, url, w, h);
+			}
+			/*密码-修改*/
+			function member_password(title, url, id, w, h) {
+				x_admin_show(title, url, w, h);
+			}
+			/*用户-删除*/
+			function member_del(obj, id) {
+				layer.confirm('确认要删除吗？', function(index) {
+					//发异步删除数据
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!', {
+						icon: 1,
+						time: 1000
+					});
+				});
+			}
+		</script>
+
+		<!-- Vendor JS Files -->
+		<script src="../../static/assets/vendor/jquery/jquery.min.js"></script>
+		<script src="../../static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../../static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+		<script src="../../static/assets/vendor/php-email-form/validate.js"></script>
+		<script src="../../static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+		<script src="../../static/assets/vendor/venobox/venobox.min.js"></script>
+		<script src="../../static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="../../static/assets/js/main.js"></script>
+
+	</body>
+
+</html>
+
+</body>
+
+</html>
